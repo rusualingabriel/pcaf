@@ -71,7 +71,7 @@ Descărcați fișierul .json cu cheia privată din consola Firebase (Project Set
 ⚠️ **IMPORTANT REFORZAT** (Sistem de Siguranță):
 Vă rugăm să păstrați comanda /credits, ca o formă minimă de respect pentru orele de muncă depuse.
 
-**Notă tehnică**: Codul sursă conține sisteme integrate de verificare a integrității (măsuri de protecție criptate). Orice tentativă de a șterge, modifica sau ascunde comanda de credite sau numele autorului va duce la oprirea automată a botului.
+**Notă tehnică**: Codul sursă conține sisteme integrate de verificare a integrității (măsuri de protecție). Orice tentativă de a șterge, modifica sau ascunde comanda de credite sau numele autorului va duce la oprirea automată a botului.
 
 ---
 
