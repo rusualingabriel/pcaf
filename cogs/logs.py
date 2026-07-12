@@ -130,7 +130,6 @@ class LoggerCog(commands.Cog):
         with open(cale_fisier_principal, "r", encoding="utf-8") as f:
             if target not in f.read():
                 print(id_code)
-                print("5")
                 os._exit(1)
     except Exception as e:
         print(e)
