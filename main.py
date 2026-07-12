@@ -22,7 +22,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 OWNER_ID = int(os.getenv('OWNER_ID')) 
 FIREBASE_URL = os.getenv('FIREBASE_URL')
 GUILD_STAFF = discord.Object(id=int(os.getenv('GUILD_STAFF_ID')))
-NUME_BOT = "PCAF"
+NUME_BOT = "PCAF" # De modificat numele la bot
 
 if not firebase_admin._apps:
     cred = credentials.Certificate("firebase-adminsdk.json")
