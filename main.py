@@ -22,7 +22,7 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 OWNER_ID = int(os.getenv('OWNER_ID')) 
 FIREBASE_URL = os.getenv('FIREBASE_URL')
 GUILD_STAFF = discord.Object(id=int(os.getenv('GUILD_STAFF_ID')))
-NUME_BOT = "PCAF" # De modificat numele la bot
+NUME_BOT = "PCAF" # Se schimba numele la bot de aici
 
 if not firebase_admin._apps:
     cred = credentials.Certificate("firebase-adminsdk.json")
@@ -1432,12 +1432,27 @@ async def admitere(interaction: discord.Interaction, nume: str, membru: discord.
     
     status_nume = "Neschimbat"
     
-    format_p = config.get("format_porecla", "{nume}")
+    config_ref = bot.get_server_ref(interaction.guild_id).child("setari_nume")
+    config = config_ref.get() or {}
+    
+    rankuri_data = config.get("rankuri", {})
+    
+    nume_rank_1 = "Rank 1"
+    if rankuri_data:
+        if isinstance(rankuri_data, list):
+            if len(rankuri_data) > 1 and rankuri_data[1]:
+                nume_rank_1 = rankuri_data[1]
         
+        elif isinstance(rankuri_data, dict):
+            nume_rank_1 = rankuri_data.get("1") or rankuri_data.get(1) or "Rank 1"
+
+    format_p = config.get("format", "{nume}")
+    
     noua_porecla = format_p.replace("{nume}", nume)
+    noua_porecla = noua_porecla.replace("{rank_nume}", nume_rank_1)
+    noua_porecla = noua_porecla.replace("{rank_numar}", "1")
         
     try:
-            
         await membru.edit(nick=noua_porecla[:32])
         status_nume = f"✅ `{noua_porecla}`"
     except Exception as e:
